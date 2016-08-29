@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="search">
+    Search:
+    <input ng-model="$ctrl.query" />
+  </div>
+  <div class="sort">
+    Filter by:
+    {{$ctrl.orderProp}}
+    <select ng-model="$ctrl.orderProp"> <!-- TODO: Fix this to make it appear on page 
+    https://docs.angularjs.org/tutorial/step_06 -->
+      <option value="name">Alphabetical</option>
+      <option value="age">Newest</option>
+      <option value="distance">Closest</option>
+    </select>
+  </div>
+  <div class="list">
+    <ul class="users">
+      <li ng-repeat="user in $ctrl.users | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+        <span>{{user.name}}</span>
+        <span>{{user.age}}</span>
+        <p>Distance: {{user.distance}}</p>
+        <p>{{user.blurb}}</p>
+      </li>
+    </ul>
+  </div>
+</div>
