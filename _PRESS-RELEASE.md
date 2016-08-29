@@ -37,7 +37,7 @@ Once the project moves into development, the press release can be used as a touc
 	"We aim to push the boundaries of digital networking and socialisation by building tools that allow you to really customize the way you put yourself out there in safe, proactive ways that also help the environment" - Akai Senghor
 
 ## How to Get Started ##
-	Just go to flirter and pick your gender to see matches in your area! You'll have to authenticate / create an account to actually reach out, but that is as simple as one click!
+	Just go to flirter and pick your preference to see matches in your area! You'll have to authenticate / create an account to actually reach out, but that is as simple as one click!
 
 ## Customer Quote ##
 	"Wow, I've never walked so little in my life" - Connor Chevli
