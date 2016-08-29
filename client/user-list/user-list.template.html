@@ -16,7 +16,11 @@
   <div class="list">
     <ul class="users">
       <li ng-repeat="user in $ctrl.users | filter:$ctrl.query | orderBy:$ctrl.orderProp">
-        <span>{{user.name}}</span>
+        <a href="#/users/{{user.id}}" class="thumbnail">
+          <!-- ng-src prevents initiating request to {{}} -->
+          <img ng-src="{{user.imageUrl}}" alt="{{user.name}}" />
+        </a>
+        <a href="#/users/{{user.id}}">{{user.name}}</a>
         <span>{{user.age}}</span>
         <p>Distance: {{user.distance}}</p>
         <p>{{user.blurb}}</p>

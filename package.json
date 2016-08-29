@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "http-server ./app -a localhost -p 8000 -c-1",
+    "dev": "live-server client"
   },
   "repository": {
     "type": "git",
@@ -17,8 +21,6 @@
   },
   "homepage": "https://github.com/simeonlee/2016-07-mvp#readme",
   "dependencies": {
-    "angular": "^1.5.8",
-    "jquery": "^3.1.0",
-    "materialize-css": "^0.97.7"
+    "bower": "^1.7.9"
   }
 }

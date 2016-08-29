@@ -1,1 +1,3 @@
-angular.module('userList', []);
+angular.module('userList', [
+	'ngRoute'
+]);

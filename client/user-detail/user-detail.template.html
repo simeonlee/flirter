@@ -1,0 +1,26 @@
+<img ng-src="{{$ctrl.user.imageUrl}}" class="user" />
+
+<h1>{{$ctrl.user.name | uppercase}}</h1>
+
+<p>{{$ctrl.user.description}}</p>
+<p>{{$ctrl.user.youLiked | liked}}</p>
+
+<!-- <ul class="thumbnails">
+  <li ng-repeat="img in $ctrl.user.images">
+    <img ng-src="{{img}}" />
+  </li>
+</ul> -->
+
+<ul class="user-info">
+  <li>
+    <span>Availability and Networks</span>
+    <!-- <dl>
+      <dt>Availability</dt>
+      <dd ng-repeat="availability in $ctrl.phone.availability">{{availability}}</dd>
+    </dl> -->
+  </li>
+  <li>
+    <!-- <span>Additional Features</span>
+    <dd>{{$ctrl.phone.additionalFeatures}}</dd> -->
+  </li>
+</ul>

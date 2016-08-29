@@ -1,0 +1,26 @@
+{
+  "name": "flirter",
+  "description": "",
+  "main": "client/index.html",
+  "authors": [
+    "Simeon Lee <simeonhlee@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://www.flirter.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-animate": "1.5.x",
+    "angular-mocks": "1.5.x",
+    "angular-resource": "1.5.x",
+    "angular-route": "1.5.x",
+    "bootstrap": "3.3.x",
+    "jquery": "2.2.x"
+  }
+}
