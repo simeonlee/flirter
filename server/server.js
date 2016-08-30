@@ -56,18 +56,18 @@ db.once('open', function() {
     this.findOne({_id: profile.id}, function(err, result) {
       if (!result) {
         console.log(profile);
-        var json = JSON.parse(profile._json);
-        userObj.name = json.first_name;
+        var raw = JSON.parse(profile._raw);
+        userObj.name = raw.first_name;
         userObj.email = profile.emails[0].value;
-        userObj.ageRange = json.age_range;
-        userObj.birthday = json.birthday;
-        userObj.gender = json.gender;
-        userObj.city = json.location.name;
-        userObj.job = json.work;
-        userObj.education = json.education.school.name;
-        userObj.description = json.bio;
+        userObj.ageRange = raw.age_range;
+        userObj.birthday = raw.birthday;
+        userObj.gender = raw.gender;
+        userObj.city = raw.location.name;
+        userObj.job = raw.work;
+        userObj.education = raw.education.school.name;
+        userObj.description = raw.bio;
         userObj.profileImageUrl = profile.photos[0].value;
-        userObj.coverPhotoUrl = json.cover.source;
+        userObj.coverPhotoUrl = raw.cover.source;
         userObj.save(cb);
       } else {
         cb(err, result);
