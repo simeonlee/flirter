@@ -11,8 +11,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 // var config = require('./config');
 
 var mongooseUri =
-   process.env.MONGOLAB_URI ||
-   process.env.MONGOHQ_URL ||
+   process.env.MONGODB_URI ||
    'mongodb://localhost/flirter'
 mongoose.connect(mongooseUri);
 var db = mongoose.connection;
