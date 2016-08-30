@@ -211,7 +211,10 @@ db.once('open', function() {
   // access was granted, the user will be logged in.  Otherwise,
   // authentication has failed.
   app.get('/auth/facebook/callback', 
-    passport.authenticate('facebook', { successRedirect: '/#/map', failureRedirect: '/#/map' }));
+    passport.authenticate('facebook', { failureRedirect: '/#/map' }),
+    function(req, res) {
+      res.redirect('/#/map');
+    });
 
   module.exports = app;
 });

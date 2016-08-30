@@ -11,7 +11,7 @@ angular
           lng: -122.408966
         };
         
-        console.log($rootScope.userLocation);
+        console.log('userLocation from $rootScope: ', $rootScope.userLocation);
         var self = this;
         $http.get('styles/mapStyle.json').then(function(response) {
           // self.mapStyle = response.data;
@@ -42,14 +42,11 @@ angular
           $rootScope.userMarker.setMap(map);
           $rootScope.userMarker.setAnimation(google.maps.Animation.BOUNCE);
 
-
-
           // listen for user location determination and re-set center of map
           $scope.$watch(function() {
             return $rootScope.userLocation;
           }, function() {
-            console.log($rootScope.userLocation);
-            // map.setCenter($rootScope.userLocation)
+            console.log('userLocation from $rootScope: ', $rootScope.userLocation);            // map.setCenter($rootScope.userLocation)
             // var userIcon = new google.maps.MarkerImage('images/user/userIcon@2x.png', null, null, null, new google.maps.Size(40, 40))
             // var userMarker = new google.maps.Marker({
             //   position: $rootScope.userLocation,
@@ -67,8 +64,8 @@ angular
           console.log(this.shoutedMessage);
           // Set infowindow content
           var iwContent = '<div class="iw">'+
-            this.shoutedMessage+
             // '<a href="'+externalLink+'" target="_blank">'+
+            this.shoutedMessage+
             // '<img src="'+thumbnailUrl+'" alt="'+externalLink+'" class="iw">'+
             // '</a>'+
             '</div>'
