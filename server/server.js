@@ -62,7 +62,7 @@ passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
     // callbackURL: "http://www.example.com/auth/facebook/callback"
-    callbackURL: "localhost:8080/auth/facebook/callback"
+    callbackURL: "https://limitless-stream-28526.herokuapp.com/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate(profile, function(err, user) {
