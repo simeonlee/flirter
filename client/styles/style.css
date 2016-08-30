@@ -43,3 +43,21 @@ li {
   height: 100%;
   width: 100%;
 }
+
+.gm-style-iw {
+  width: 200px !important;
+  top: 25px !important; /* move the infowindow down */
+  background-color: white;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  margin: 0;
+  padding: 5px;
+  box-shadow: 0 0px 4px rgba(120, 120, 120, 0.6);
+}
+
+.iw {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
