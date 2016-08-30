@@ -60,6 +60,17 @@ db.once('open', function() {
 
   User = mongoose.model('User', userSchema);
 
+
+  var app = express();
+  app.use(express.static(__dirname + '/../client'));
+  app.use(bodyParser.json());
+  app.use(passport.initialize());
+
+  var server = app.listen(process.env.PORT || 8080, function() {
+    var port = server.address().port;
+    console.log('App is running on port ' + port);
+  });
+
   passport.use(new FacebookStrategy({
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
@@ -73,16 +84,7 @@ db.once('open', function() {
       });
     }
   ));
-
-  var app = express();
-  app.use(express.static(__dirname + '/../client'));
-  app.use(bodyParser.json());
-
-  var server = app.listen(process.env.PORT || 8080, function() {
-    var port = server.address().port;
-    console.log('App is running on port ' + port);
-  });
-
+  
   // get all users
   app.get('/users', function(req, res) {
     console.log('/users hit');
