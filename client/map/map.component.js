@@ -94,6 +94,8 @@ angular
           
           this.shoutedMessage = '';
 
+          console.log($rootScope.userLocation);
+
           // About 'state':
           // true = 'I am currently open'
           // false = 'I am currently not open'

@@ -43,6 +43,14 @@ db.once('open', function() {
         location: String
       }
     ],
+    peopleLiked: [
+      {
+        userId: String,
+        messageLiked: String,
+        dateLiked: Date,
+        locationLiked: String
+      }
+    ],
     lastLocation: String,
     joinDate: { type: Date, default: Date.now },
 

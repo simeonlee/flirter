@@ -4,7 +4,7 @@ angular
     $scope.$on('$viewContentLoaded', function() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(geoposition) {
-          $rootScope.location = {
+          $rootScope.userLocation = {
             lat: geoposition.coords.latitude,
             lng: geoposition.coords.longitude
           };
