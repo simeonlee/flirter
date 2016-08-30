@@ -10,8 +10,11 @@ var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 // var config = require('./config');
 
-
-mongoose.connect('mongodb://localhost/flirter');
+var mongooseUri =
+   process.env.MONGOLAB_URI ||
+   process.env.MONGOHQ_URL ||
+   'mongodb://localhost/flirter'
+mongoose.connect(mongooseUri);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
