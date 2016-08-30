@@ -11,12 +11,28 @@ angular
   .factory('User', ['$resource',
     function($resource) {
       // return $resource('sample-data/:userId.json', {}, {
-      return $resource('/users', {}, {
-        query: {
-          method: 'GET',
-          // params: {userId: 'users.sample'},
-          isArray: true
-        }
-      });
+      // return $resource('/users', {}, {
+      //   query: {
+      //     method: 'GET',
+      //     // params: {userId: 'users.sample'},
+      //     isArray: true
+      //   }
+      // });
+      return {
+        users: $resource('/users', {}, {
+          query: {
+            method: 'GET',
+            // params: {userId: 'users.sample'},
+            isArray: true
+          }
+        })
+        // }),
+        // self: $resource('/users/' + $rootResource.self.id, {}, {
+        //   query: {
+        //     method: 'GET',
+        //     isArray: false
+        //   }
+        // })
+      }
     }
   ]);

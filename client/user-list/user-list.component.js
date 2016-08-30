@@ -25,7 +25,7 @@ angular
           // self.users = response.data;
         });*/
 
-        this.users = User.query();
+        this.users = User.users.query();
         console.log(this.users);
         this.orderProp = 'distance';
 
