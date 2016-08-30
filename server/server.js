@@ -64,7 +64,7 @@ db.once('open', function() {
   var app = express();
   app.use(express.static(__dirname + '/../client'));
   app.use(bodyParser.json());
-  app.use(express.session({ secret: 'secret' }));
+  // app.use(express.session({ secret: 'secret' }));
   app.use(passport.initialize());
   app.use(passport.session());
 
