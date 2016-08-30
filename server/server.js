@@ -21,7 +21,7 @@ db.once('open', function() {
 
   userSchema = new Schema({
     name: String,
-    age: Number,
+    ageRange: String,
     city: String,
     job: String,
     description: String,
@@ -51,6 +51,11 @@ db.once('open', function() {
       if (!result) {
         console.log(profile);
         userObj.name = profile.displayName.split(' ')[0];
+        userObj.ageRange = profile.age_range;
+        userObj.city = profile.location;
+        userObj.job = profile.work;
+        userObj.description = profile.bio;
+        userObj.imageUrls = [profile.photos];
         userObj.save(cb);
       } else {
         cb(err, result);
@@ -79,7 +84,25 @@ db.once('open', function() {
       // callbackURL: "http://www.example.com/auth/facebook/callback"
       callbackURL: "https://limitless-stream-28526.herokuapp.com/auth/facebook/callback",
       // https://developers.facebook.com/docs/graph-api/reference/v2.5/user
-      profileFields: ['id', 'displayName', 'photos', 'email', 'bio', 'birthday', 'cover', 'education', 'first_name', 'last_name', 'gender', 'interested_in', 'is_verified', 'link', 'location', 'website', 'work']
+      profileFields: [
+        'id', 
+        'displayName', 
+        'first_name', 
+        'last_name', 
+        'email', 
+        'bio', 
+        'work'
+        'education', 
+        'location', 
+        'birthday', 
+        'cover', 
+        'photos', 
+        'gender', 
+        'interested_in', 
+        'link', // FB timeline 
+        'website', 
+        'is_verified', 
+      ]
     },
     function(accessToken, refreshToken, profile, done) {
       User.findOrCreate(profile, function(err, user) {
@@ -105,28 +128,28 @@ db.once('open', function() {
 
   // create a new user
   app.post('/users', function(req, res) {
-    var body = req.body;
-    var user = new User({
-      name: body.name,
-      age: body.age,
-      city: body.city,
-      job: body.job,
-      description: body.description,
-      imageUrls: body.imageUrls,
-      notes: body.notes,
-      lastLocation: body.lastLocation,
-      joinDate: Date.now(),
-      minor: body.age < 18 ? true : false,
-      meta: {
-        likedSomeone: body.meta.likedSomeone,
-        beenLiked: body.meta.beenLiked
-      }
-    });
-    user.save(function(err) {
-      if (err) return handleError(err);
-      // saved
-      console.log('User has been saved to database!');
-    });
+    // var body = req.body;
+    // var user = new User({
+    //   name: body.name,
+    //   age: body.age,
+    //   city: body.city,
+    //   job: body.job,
+    //   description: body.description,
+    //   imageUrls: body.imageUrls,
+    //   notes: body.notes,
+    //   lastLocation: body.lastLocation,
+    //   joinDate: Date.now(),
+    //   minor: body.age < 18 ? true : false,
+    //   meta: {
+    //     likedSomeone: body.meta.likedSomeone,
+    //     beenLiked: body.meta.beenLiked
+    //   }
+    // });
+    // user.save(function(err) {
+    //   if (err) return handleError(err);
+    //   // saved
+    //   console.log('User has been saved to database!');
+    // });
   });
 
   // find user by id
@@ -147,7 +170,7 @@ db.once('open', function() {
   // Redirect the user to Facebook for authentication.  When complete,
   // Facebook will redirect the user back to the application at
   //     /auth/facebook/callback
-  app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['user_friends', 'email', 'user_likes'] }));
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['user_friends', 'email', 'user_likes', 'user_photos', 'user_birthday'] }));
 
   // Facebook will redirect the user to this URL after approval.  Finish the
   // authentication process by attempting to obtain an access token.  If
