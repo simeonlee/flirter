@@ -22,10 +22,16 @@ db.once('open', function() {
   userSchema = new Schema({
     name: String,
     ageRange: String,
+    birthday: String,
+    gender: String,
     city: String,
     job: String,
+    education: String,
     description: String,
+    profileImageUrl: String,
+    coverPhotoUrl: String,
     imageUrls: [ String ],
+    email: String,
     notes: [
       {
         body: String,
@@ -50,12 +56,18 @@ db.once('open', function() {
     this.findOne({_id: profile.id}, function(err, result) {
       if (!result) {
         console.log(profile);
-        userObj.name = profile.displayName.split(' ')[0];
-        userObj.ageRange = profile.age_range;
-        userObj.city = profile.location;
-        userObj.job = profile.work;
-        userObj.description = profile.bio;
-        userObj.imageUrls = [profile.photos];
+        var json = JSON.parse(profile._json);
+        userObj.name = json.first_name;
+        userObj.email = profile.emails[0].value;
+        userObj.ageRange = json.age_range;
+        userObj.birthday = json.birthday;
+        userObj.gender = json.gender;
+        userObj.city = json.location.name;
+        userObj.job = json.work;
+        userObj.education = json.education.school.name;
+        userObj.description = json.bio;
+        userObj.profileImageUrl = profile.photos[0].value;
+        userObj.coverPhotoUrl = json.cover.source;
         userObj.save(cb);
       } else {
         cb(err, result);
