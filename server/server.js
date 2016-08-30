@@ -145,6 +145,8 @@ db.once('open', function() {
 
   app.get('/self', function(req, res) {
     User.findOne({_id: userId}, function(err, user) {
+      console.log('----> Found self!');
+      console.log(user);
       res.send(user);
     })
   });

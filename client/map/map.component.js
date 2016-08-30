@@ -70,8 +70,8 @@ angular
           // Set infowindow content
           var iwContent = '<div class="iw">'+
             // '<a href="'+externalLink+'" target="_blank">'+
+            // '<img src="'+thumbnailUrl+'" alt="'+externalLink+'">'+
             this.shoutedMessage+
-            // '<img src="'+thumbnailUrl+'" alt="'+externalLink+'" class="iw">'+
             // '</a>'+
             '</div>'
           var infowindow = new google.maps.InfoWindow({
