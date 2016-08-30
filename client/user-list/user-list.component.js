@@ -3,8 +3,8 @@ angular
   .component('userList', {
     // Url is relative to our index.html file
     templateUrl: 'user-list/user-list.template.html',
-    controller: ['$http',
-      function UserListController($http) {
+    controller: ['User',
+      function UserListController(User) {
         // var self = this;
 
         /*

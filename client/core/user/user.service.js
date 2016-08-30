@@ -13,7 +13,7 @@ angular
       return $resource('sample-data/:userId.json', {}, {
         query: {
           method: 'GET',
-          params: {userId: 'users'},
+          params: {userId: 'users.sample'},
           isArray: true
         }
       });
