@@ -3,8 +3,11 @@ angular
   .component('map', {
     // template: 'TODO: detailed view for <span>{{$ctrl.userId}}</span>',
     templateUrl: 'map/map.template.html',
-    controller: ['$http', '$scope', '$rootScope',
-      function MapController($http, $scope, $rootScope) {
+    controller: ['$http', '$scope', '$rootScope', 'User',
+      function MapController($http, $scope, $rootScope, User) {
+
+        $rootScope.self = User.self.query();
+        console.log($rootScope.self);
 
         this.location = {
           lat: 37.783697,
@@ -62,6 +65,8 @@ angular
 
         this.shout = function() {
           console.log(this.shoutedMessage);
+
+
           // Set infowindow content
           var iwContent = '<div class="iw">'+
             // '<a href="'+externalLink+'" target="_blank">'+
