@@ -71,39 +71,17 @@ db.once('open', function() {
       });
     }
   ));
+
+  var app = express();
+  app.use(express.static(__dirname + '/../client'));
+  app.use(bodyParser.json());
+
+  var server = app.listen(process.env.PORT || 8080, function() {
+    var port = server.address().port;
+    console.log('App is running on port ' + port);
+  });
 });
 
-
-
-// var ObjectID = mongodb.ObjectID;
-
-// var USERS_COLLECTION = "users";
-
-var app = express();
-app.use(express.static(__dirname + '/../client'));
-app.use(bodyParser.json());
-
-// put in global scope to allow usage by all route handlers
-// var db;
-
-// connect app and database
-// mongodb.MongoClient.connect(process.env.MONGODB_URI, function(err, database) {
-// 	if (err) {
-//     console.log(err);
-//     process.exit(1);
-//   }
-
-//   db = database;
-//   console.log('Database is connected');
-
-//   // initialize the application only after the db connection is ready
-//   // ensures app won't crash or error out by trying database operations
-//   // before the connection is established
-var server = app.listen(process.env.PORT || 8080, function() {
-  var port = server.address().port;
-  console.log('App is running on port ' + port);
-});
-// });
 
 // get all users
 app.get('/users', function(req, res) {
