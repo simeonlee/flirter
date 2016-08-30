@@ -104,19 +104,19 @@ angular
             // This <div> groups the close button elements
             var iwCloseBtn = iwOuter.next();
 
-            iwCloseBtn.css({
-              opacity: '1.0', // by default the close button has an opacity of 0.7
-              position: 'absolute',
-              right: '62px', top: '24px', // button repositioning
-              content: 'url("client/images/closebutton@2x.png")',
-              height: '15px', width: '15px'
-            });
+            // iwCloseBtn.css({
+            //   opacity: '1.0', // by default the close button has an opacity of 0.7
+            //   position: 'absolute',
+            //   right: '62px', top: '24px', // button repositioning
+            //   content: 'url("client/images/closebutton@2x.png")',
+            //   height: '15px', width: '15px'
+            // });
 
             // Google API automatically applies 0.7 opacity to the button after the mouseout event.
             // This function reverses this event to the desired value.
-            iwCloseBtn.mouseout(function(){
-              $(this).css({opacity: '1.0'});
-            });
+            // iwCloseBtn.mouseout(function(){
+            //   $(this).css({opacity: '1.0'});
+            // });
 
             // Remove close button
             iwCloseBtn.css({'display': 'none'});

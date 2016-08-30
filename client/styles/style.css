@@ -40,8 +40,59 @@ li {
 }
 
 #map {
-  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.shout {
+  position: absolute;
+  bottom: 0;
   width: 100%;
+  height: 60px;
+  left: 0;
+  right: 0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.shout form {
+  width: 100%;
+  margin: 5px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+}
+
+.shout input {
+  border-radius: 5px 0 0 5px;
+  border: rgb(180, 180, 180) solid 1px;
+  margin: 0;
+  padding: 0 10px;
+  /*height: 30px;*/
+  width: 70%;
+}
+
+.shout button {
+  width: 20%;
+  /*height: 30px;*/
+  margin: 0 0 0 -1px;
+  padding: 0 0 1px 0;
+  background-color: #FF0080;
+  border-radius: 0 5px 5px 0;
+  border: 0px;
+  font-size: 20px;
+  font-weight: 100;
+  color: white;
+}
+
+.shout > form > button:hover {
+  background-color: #FF0088;
 }
 
 .gm-style-iw {

@@ -5,14 +5,17 @@ angular
       // $locationProvider.hashPrefix('!');
 
       $routeProvider
+        .when('/map', {
+          template: '<map></map>'
+        })
+        .when('/settings', {
+          template: '<settings></settings>'
+        })
         .when('/users', {
           template: '<user-list></user-list>'
         })
         .when('/users/:userId', {
           template: '<user-detail></user-detail>'
-        })
-        .when('/map', {
-          template: '<map></map>'
         })
         .otherwise('/map');
     }

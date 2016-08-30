@@ -12,7 +12,7 @@ var utils = require('./lib/utils');
 
 var mongooseUri =
    process.env.MONGODB_URI ||
-   'mongodb://localhost/flirter'
+   'mongodb://localhost/flirter';
 mongoose.connect(mongooseUri);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
