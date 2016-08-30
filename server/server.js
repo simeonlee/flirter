@@ -91,7 +91,7 @@ db.once('open', function() {
         'last_name', 
         'email', 
         'bio', 
-        'work'
+        'work',
         'education', 
         'location', 
         'birthday', 
