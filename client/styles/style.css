@@ -135,9 +135,10 @@ li {
 
 .iw-preference {
   height: 66px;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
 }
 
 .iw-like {
