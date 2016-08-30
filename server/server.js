@@ -4,7 +4,8 @@ var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var userSchema, User;
+var userSchema;
+var User;
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 // var config = require('./config');
@@ -56,22 +57,23 @@ db.once('open', function() {
   }
 
   User = mongoose.model('User', userSchema);
+  
+  passport.use(new FacebookStrategy({
+      clientID: process.env.FACEBOOK_APP_ID,
+      clientSecret: process.env.FACEBOOK_APP_SECRET,
+      // callbackURL: "http://www.example.com/auth/facebook/callback"
+      callbackURL: "https://limitless-stream-28526.herokuapp.com/auth/facebook/callback"
+    },
+    function(accessToken, refreshToken, profile, done) {
+      User.findOrCreate(profile, function(err, user) {
+        if (err) { return done(err); }
+        done(null, user);
+      });
+    }
+  ));
 });
 
 
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET,
-    // callbackURL: "http://www.example.com/auth/facebook/callback"
-    callbackURL: "https://limitless-stream-28526.herokuapp.com/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate(profile, function(err, user) {
-      if (err) { return done(err); }
-      done(null, user);
-    });
-  }
-));
 
 // var ObjectID = mongodb.ObjectID;
 
