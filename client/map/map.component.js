@@ -64,14 +64,13 @@ angular
         });
 
         this.shout = function() {
-          console.log(this.shoutedMessage);
-
-
           // Set infowindow content
           var iwContent = '<div class="iw">'+
             // '<a href="'+externalLink+'" target="_blank">'+
-            '<img src="'+$rootScope.self.profileImageUrl+'" alt="'+$rootScope.self.name+'">'+
-            this.shoutedMessage+
+            '<img src="'+$rootScope.self.coverPhotoUrl+'" class="iw-profile-image">'+
+            '<img src="'+$rootScope.self.profileImageUrl+'" class="iw-profile-image">'+
+            '<div class="iw-message">'+this.shoutedMessage+'<div>'+
+            '<div class="iw-time">'+new Date()+'<div>'+
             // '</a>'+
             '</div>'
           var infowindow = new google.maps.InfoWindow({

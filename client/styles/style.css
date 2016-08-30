@@ -76,6 +76,8 @@ li {
   padding: 0 10px;
   /*height: 30px;*/
   width: 70%;
+  font-weight: 100;
+  font-size: 14px;
 }
 
 .shout button {
@@ -111,4 +113,10 @@ li {
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
+}
+
+.iw-time {
+  font-size: 10px;
+  color: grey;
+  float: right;
 }
