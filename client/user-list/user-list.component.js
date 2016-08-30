@@ -26,7 +26,7 @@ angular
         });*/
 
         this.users = User.query();
-        this.orderProp = 'age';
+        this.orderProp = 'distance';
 
       }
     ]

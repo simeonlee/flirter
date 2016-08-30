@@ -5,11 +5,9 @@
   </div>
   <div class="sort">
     Filter by:
-    <!-- {{$ctrl.orderProp}} -->
-    <select ng-model="$ctrl.orderProp"> <!-- TODO: Fix this to make it appear on page 
-    https://docs.angularjs.org/tutorial/step_06 -->
+    <select ng-model="$ctrl.orderProp">
       <option value="name">Alphabetical</option>
-      <option value="age">Newest</option>
+      <option value="-age">Oldest</option>
       <option value="distance">Closest</option>
     </select>
   </div>

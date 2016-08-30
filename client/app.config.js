@@ -11,6 +11,9 @@ angular
         .when('/users/:userId', {
           template: '<user-detail></user-detail>'
         })
-        .otherwise('/users');
+        .when('/map', {
+          template: '<map></map>'
+        })
+        .otherwise('/map');
     }
   ]);

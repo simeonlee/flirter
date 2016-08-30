@@ -6,6 +6,7 @@
 angular.module('flirterApp', [
   'ngRoute',
   'core',
+  'map',
   'userList',
   'userDetail'
 ]);

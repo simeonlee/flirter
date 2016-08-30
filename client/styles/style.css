@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+}
+
+a, a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: rgb(120, 120, 120);
+}
+
+li {
+  list-style: none;
+}
+
+.nav {
+  height: 60px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+}
+
+.logo, .logo:link, .logo:visited, .logo:hover, .logo:active {
+  color: #FF0080;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.body-container {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
