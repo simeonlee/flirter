@@ -102,7 +102,7 @@ li {
   top: 25px !important; /* move the infowindow down */
   background-color: white;
   border: none;
-  border-radius: 0;
+  border-radius: 5px;
   position: relative;
   margin: 0;
   padding: 5px;
@@ -113,7 +113,6 @@ li {
   margin: 0 !important;
   padding: 0 !important;
   width: 100% !important;
-  border-radius: 5px;
 }
 
 .iw-cover-photo {
@@ -122,8 +121,13 @@ li {
 }
 
 .iw-profile-image {
-  margin: -14px 0 0 4px;
+  margin: -14px 0 0 6px;
+  border: 2px solid white;
   border-radius: 2px;
+}
+
+.iw-message {
+  margin-left: 5px;
 }
 
 .iw-time {
@@ -134,7 +138,7 @@ li {
 }
 
 .iw-preference {
-  height: 66px;
+  height: 40px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -161,9 +165,9 @@ li {
 }
 
 .iw-like-image {
-  width: 30%;
+  height: 80%;
 }
 
 .iw-dislike-image {
-  width: 30%;
+  height: 80%;
 }
