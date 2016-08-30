@@ -8,8 +8,6 @@ var userSchema;
 var User;
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
-// var config = require('./config');
-
 
 mongoose.connect('mongodb://localhost/flirter');
 var db = mongoose.connection;
@@ -57,7 +55,7 @@ db.once('open', function() {
   }
 
   User = mongoose.model('User', userSchema);
-  
+
   passport.use(new FacebookStrategy({
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
@@ -113,35 +111,33 @@ app.post('/users', function(req, res) {
     // saved
     console.log('User has been saved to database!');
   });
-  // var connection = mongoose.createConnection('mongodb://localhost/flirter');
-  // var User = connection.model('User', userSchema);
+
+  // find user by id
+  app.get('/users/:id', function(req, res) {
+
+  });
+
+  // update user by id
+  app.put('/users/:id', function(req, res) {
+
+  });
+
+  // delete user by id
+  app.delete('/users/:id', function(req, res) {
+    
+  });
+
+  // Redirect the user to Facebook for authentication.  When complete,
+  // Facebook will redirect the user back to the application at
+  //     /auth/facebook/callback
+  app.get('/auth/facebook', passport.authenticate('facebook'));
+
+  // Facebook will redirect the user to this URL after approval.  Finish the
+  // authentication process by attempting to obtain an access token.  If
+  // access was granted, the user will be logged in.  Otherwise,
+  // authentication has failed.
+  app.get('/auth/facebook/callback', 
+    passport.authenticate('facebook', { successRedirect: '/#/map', failureRedirect: '/#/map' }));
+
+  module.exports = app;
 });
-
-// find user by id
-app.get('/users/:id', function(req, res) {
-
-});
-
-// update user by id
-app.put('/users/:id', function(req, res) {
-
-});
-
-// delete user by id
-app.delete('/users/:id', function(req, res) {
-  
-});
-
-// Redirect the user to Facebook for authentication.  When complete,
-// Facebook will redirect the user back to the application at
-//     /auth/facebook/callback
-app.get('/auth/facebook', passport.authenticate('facebook'));
-
-// Facebook will redirect the user to this URL after approval.  Finish the
-// authentication process by attempting to obtain an access token.  If
-// access was granted, the user will be logged in.  Otherwise,
-// authentication has failed.
-app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/#/map', failureRedirect: '/#/map' }));
-
-module.exports = app;
