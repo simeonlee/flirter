@@ -8,6 +8,8 @@ var userSchema;
 var User;
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
+// var config = require('./config');
+
 
 mongoose.connect('mongodb://localhost/flirter');
 var db = mongoose.connection;
@@ -78,38 +80,37 @@ db.once('open', function() {
     var port = server.address().port;
     console.log('App is running on port ' + port);
   });
-});
 
-
-// get all users
-app.get('/users', function(req, res) {
-  console.log('/users hit');
-  res.send(['blah']);
-});
-
-// create a new user
-app.post('/users', function(req, res) {
-  var body = req.body;
-  var user = new User({
-    name: body.name,
-    age: body.age,
-    city: body.city,
-    job: body.job,
-    description: body.description,
-    imageUrls: body.imageUrls,
-    notes: body.notes,
-    lastLocation: body.lastLocation,
-    joinDate: Date.now(),
-    minor: body.age < 18 ? true : false,
-    meta: {
-      likedSomeone: body.meta.likedSomeone,
-      beenLiked: body.meta.beenLiked
-    }
+  // get all users
+  app.get('/users', function(req, res) {
+    console.log('/users hit');
+    res.send(['blah']);
   });
-  user.save(function(err) {
-    if (err) return handleError(err);
-    // saved
-    console.log('User has been saved to database!');
+
+  // create a new user
+  app.post('/users', function(req, res) {
+    var body = req.body;
+    var user = new User({
+      name: body.name,
+      age: body.age,
+      city: body.city,
+      job: body.job,
+      description: body.description,
+      imageUrls: body.imageUrls,
+      notes: body.notes,
+      lastLocation: body.lastLocation,
+      joinDate: Date.now(),
+      minor: body.age < 18 ? true : false,
+      meta: {
+        likedSomeone: body.meta.likedSomeone,
+        beenLiked: body.meta.beenLiked
+      }
+    });
+    user.save(function(err) {
+      if (err) return handleError(err);
+      // saved
+      console.log('User has been saved to database!');
+    });
   });
 
   // find user by id
