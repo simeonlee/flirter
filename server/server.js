@@ -203,6 +203,8 @@ db.once('open', function() {
     console.log('We\'ve found user!')
     console.log('Attempting to save stuff to database');
     console.log(req.body);
+    console.log('---->');
+    console.log(:id);
   });
 
   // delete user by id
