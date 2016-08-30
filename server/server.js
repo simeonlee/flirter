@@ -200,11 +200,18 @@ db.once('open', function() {
 
   // update user by id
   app.put('/users/:id', function(req, res) {
-    console.log('We\'ve found user!')
-    console.log('Attempting to save stuff to database');
+    console.log('---> We\'ve found user!')
+    console.log('---> Attempting to save stuff to database');
     console.log(req.body);
-    console.log('---->');
-    console.log(:id);
+    User.findById(req.body._id, function(err, user) {
+      if (err) return handleError(err);
+      user.notes.push(req.body.message);
+      user.save(function(err) {
+        if (err) return handleError(err);
+        console.log('---> We\'ve saved stuff to database!');
+        res.send(user);
+      })
+    })
   });
 
   // delete user by id

@@ -100,9 +100,12 @@ angular
           */
 
           $http.put('/users/' + $rootScope.self._id, {
-            body: this.shoutedMessage,
-            date: shoutTimestamp,
-            location: $rootScope.userLocation
+            _id: $rootScope.self._id,
+            message: {
+              body: this.shoutedMessage,
+              date: shoutTimestamp,
+              location: $rootScope.userLocation
+            }
           })
             .then(
               function(response){
