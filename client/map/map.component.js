@@ -72,7 +72,7 @@ angular
               '<img src="'+$rootScope.self.coverPhotoUrl+'" class="iw-cover-photo" />'+
               '<img src="'+$rootScope.self.profileImageUrl+'" class="iw-profile-image" />'+
               '<div class="iw-message">'+this.shoutedMessage+'</div>'+
-              '<div class="iw-time">'+shoutTimestamp+'</div>'+
+              '<div class="iw-time">'+calculateSince(shoutTimestamp)+'</div>'+
               '<div class="iw-preference">'+
                 '<div class="iw-like">'+
                   '<img src="/images/heart/heart@2x.png" class="iw-like-image">'+
