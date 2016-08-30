@@ -40,7 +40,7 @@ angular
 
           // Set infowindow content
           var iwContent = '<div class="iw">'+
-            Hello+
+            'Hello'+
             // '<a href="'+externalLink+'" target="_blank">'+
             // '<img src="'+thumbnailUrl+'" alt="'+externalLink+'" class="iw">'+
             // '</a>'+
