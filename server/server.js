@@ -46,7 +46,8 @@ db.once('open', function() {
     var userObj = new this();
     this.findOne({_id: profile.id}, function(err, result) {
       if (!result) {
-        userObj.username = profile.displayName;
+        console.log(profile);
+        userObj.name = profile.displayName;
         userObj.save(cb);
       } else {
         cb(err, result);
@@ -161,6 +162,6 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 // access was granted, the user will be logged in.  Otherwise,
 // authentication has failed.
 app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/login' }));
+  passport.authenticate('facebook', { successRedirect: '/#/map', failureRedirect: '/#/map' }));
 
 module.exports = app;
