@@ -64,7 +64,7 @@ db.once('open', function() {
         userObj.gender = raw.gender;
         userObj.city = raw.location.name;
         userObj.job = raw.work;
-        userObj.education = raw.education.school.name;
+        userObj.education = raw.education[0].school.name;
         userObj.description = raw.bio;
         userObj.profileImageUrl = profile.photos[0].value;
         userObj.coverPhotoUrl = raw.cover.source;
