@@ -99,7 +99,7 @@ angular
           $http.put(url, data, config)
           */
 
-          $http.put('/users/' + $rootScope.self.profile._id, {
+          $http.put('/users/' + $rootScope.self._id, {
             body: this.shoutedMessage,
             date: shoutTimestamp,
             location: $rootScope.userLocation
