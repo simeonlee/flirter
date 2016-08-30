@@ -52,10 +52,10 @@ angular
           });
 
           // Attach to marker variable
-          marker.infowindow = infowindow;
+          userMarker.infowindow = infowindow;
           
           // .open sets the infowindow upon the map
-          marker.infowindow.open(map, marker);
+          userMarker.infowindow.open(map, userMarker);
           
           // About 'state':
           // true = 'I am currently open'
