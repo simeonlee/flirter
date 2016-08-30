@@ -213,6 +213,7 @@ db.once('open', function() {
   app.get('/auth/facebook/callback', 
     passport.authenticate('facebook', { failureRedirect: '/#/map' }),
     function(req, res) {
+      console.log(req);
       res.redirect('/#/map');
     });
 
