@@ -84,7 +84,15 @@ db.once('open', function() {
       });
     }
   ));
-  
+
+  passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+
+  passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
+
   // get all users
   app.get('/users', function(req, res) {
     console.log('/users hit');
