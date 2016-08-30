@@ -110,7 +110,8 @@ angular
             .then(
               function(response){
                 // success callback
-                console.log('We\'ve supposedly put the message in the user object in the database!');
+                console.log(response);
+                console.log('We\'ve put the message in the user object in the database!');
               }, 
               function(response){
                 // failure callback

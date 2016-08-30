@@ -204,10 +204,16 @@ db.once('open', function() {
     console.log('---> Attempting to save stuff to database');
     console.log(req.body);
     User.findById(req.body._id, function(err, user) {
-      if (err) return handleError(err);
+      if (err) {
+        console.log(err);
+        return;
+      };
       user.notes.push(req.body.message);
       user.save(function(err) {
-        if (err) return handleError(err);
+        if (err) {
+          console.log(err);
+          return;
+        };
         console.log('---> We\'ve saved stuff to database!');
         res.send(user);
       })
