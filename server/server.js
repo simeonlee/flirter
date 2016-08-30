@@ -6,9 +6,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var userSchema;
 var User;
+var userId;
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var utils = require('./lib/utils');
+
 
 var mongooseUri =
    process.env.MONGODB_URI ||
@@ -20,6 +22,7 @@ db.once('open', function() {
   console.log('Database is connected');
 
   userSchema = new Schema({
+    _id: String,
     name: String,
     age: Number,
     ageRange: String,
@@ -50,14 +53,17 @@ db.once('open', function() {
       likedSomeone: { type: Number, default: 0 },
       beenLiked: { type: Number, default: 0 }
     }
-  });
+  },{ _id: false });
 
   userSchema.statics.findOrCreate = function(profile, cb) {
+    // store in server memory
+    userId = profile.id;
     var userObj = new this();
     this.findOne({_id: profile.id}, function(err, result) {
       if (!result) {
         console.log(profile);
         var raw = JSON.parse(profile._raw);
+        userObj._id = profile.id;
         userObj.name = raw.first_name;
         userObj.email = profile.emails[0].value;
         userObj.ageRange = raw.age_range;
@@ -137,6 +143,12 @@ db.once('open', function() {
     done(null, user);
   });
 
+  app.get('/self', function(req, res) {
+    User.findOne({_id: userId}, function(err, user) {
+      res.send(user);
+    })
+  });
+
   // get all users
   app.get('/users', function(req, res) {
     console.log('/users hit');
@@ -213,7 +225,6 @@ db.once('open', function() {
   app.get('/auth/facebook/callback', 
     passport.authenticate('facebook', { failureRedirect: '/#/map' }),
     function(req, res) {
-      console.log(req);
       res.redirect('/#/map');
     });
 

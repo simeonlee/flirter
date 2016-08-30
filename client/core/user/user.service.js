@@ -25,14 +25,14 @@ angular
             // params: {userId: 'users.sample'},
             isArray: true
           }
-        })
-        // }),
-        // self: $resource('/users/' + $rootResource.self.id, {}, {
-        //   query: {
-        //     method: 'GET',
-        //     isArray: false
-        //   }
         // })
+        }),
+        self: $resource('/self', {}, {
+          query: {
+            method: 'GET',
+            isArray: false
+          }
+        })
       }
     }
   ]);
