@@ -170,7 +170,22 @@ db.once('open', function() {
   // Redirect the user to Facebook for authentication.  When complete,
   // Facebook will redirect the user back to the application at
   //     /auth/facebook/callback
-  app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['user_friends', 'email', 'user_likes', 'user_photos', 'user_birthday'] }));
+  app.get('/auth/facebook', passport.authenticate('facebook', { scope:
+    [
+      'email', 
+      'user_likes', 
+      'user_friends', 
+      'user_photos', 
+      'user_birthday',
+      'user_location',
+      'user_education_history',
+      'user_events',
+      'user_photos',
+      'user_website',
+      'user_tagged_places',
+      'user_work_history'
+    ]
+  }));
 
   // Facebook will redirect the user to this URL after approval.  Finish the
   // authentication process by attempting to obtain an access token.  If
