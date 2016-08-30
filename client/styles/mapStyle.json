@@ -82,7 +82,7 @@
 				"visibility": "on"
 			},
 			{
-				"color": "#ff0080"
+				"color": "#19B5FE"
 			}
 		]
 	},
@@ -100,7 +100,7 @@
 		"elementType": "geometry.fill",
 		"stylers": [
 			{
-				"color": "#ff0080"
+				"color": "#19B5FE"
 			},
 			{
 				"weight": 1
@@ -112,7 +112,7 @@
 		"elementType": "geometry.stroke",
 		"stylers": [
 			{
-				"color": "#ff0080"
+				"color": "#19B5FE"
 			},
 			{
 				"weight": 0.8
@@ -154,7 +154,7 @@
 				"visibility": "on"
 			},
 			{
-				"color": "#ff0080"
+				"color": "#19B5FE"
 			}
 		]
 	}

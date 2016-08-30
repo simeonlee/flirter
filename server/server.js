@@ -5,6 +5,10 @@ var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var userSchema, User;
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
+var config = require('./config');
+
 
 mongoose.connect('mongodb://localhost/flirter');
 var db = mongoose.connection;
@@ -38,8 +42,35 @@ db.once('open', function() {
     }
   });
 
+  userSchema.statics.findOrCreate = function(profile, cb) {
+    var userObj = new this();
+    this.findOne({_id: profile.id}, function(err, result) {
+      if (!result) {
+        userObj.username = profile.displayName;
+        userObj.save(cb);
+      } else {
+        cb(err, result);
+      }
+    })
+  }
+
   User = mongoose.model('User', userSchema);
 });
+
+
+passport.use(new FacebookStrategy({
+    clientID: config.FACEBOOK_APP_ID,
+    clientSecret: config.FACEBOOK_APP_SECRET,
+    // callbackURL: "http://www.example.com/auth/facebook/callback"
+    callbackURL: "localhost:8080/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate(profile, function(err, user) {
+      if (err) { return done(err); }
+      done(null, user);
+    });
+  }
+));
 
 // var ObjectID = mongodb.ObjectID;
 
@@ -79,7 +110,30 @@ app.get('/users', function(req, res) {
 
 // create a new user
 app.post('/users', function(req, res) {
-
+  var body = req.body;
+  var user = new User({
+    name: body.name,
+    age: body.age,
+    city: body.city,
+    job: body.job,
+    description: body.description,
+    imageUrls: body.imageUrls,
+    notes: body.notes,
+    lastLocation: body.lastLocation,
+    joinDate: Date.now(),
+    minor: body.age < 18 ? true : false,
+    meta: {
+      likedSomeone: body.meta.likedSomeone,
+      beenLiked: body.meta.beenLiked
+    }
+  });
+  user.save(function(err) {
+    if (err) return handleError(err);
+    // saved
+    console.log('User has been saved to database!');
+  });
+  // var connection = mongoose.createConnection('mongodb://localhost/flirter');
+  // var User = connection.model('User', userSchema);
 });
 
 // find user by id
@@ -97,3 +151,16 @@ app.delete('/users/:id', function(req, res) {
   
 });
 
+// Redirect the user to Facebook for authentication.  When complete,
+// Facebook will redirect the user back to the application at
+//     /auth/facebook/callback
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+// Facebook will redirect the user to this URL after approval.  Finish the
+// authentication process by attempting to obtain an access token.  If
+// access was granted, the user will be logged in.  Otherwise,
+// authentication has failed.
+app.get('/auth/facebook/callback', 
+  passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/login' }));
+
+module.exports = app;
