@@ -135,7 +135,9 @@ db.once('open', function() {
   // get all users
   app.get('/users', function(req, res) {
     console.log('/users hit');
-    res.send(['blah']);
+    User.find(function(err, users) {
+      res.send(users);
+    });
   });
 
   // create a new user
