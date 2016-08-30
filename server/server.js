@@ -59,8 +59,8 @@ db.once('open', function() {
 
 
 passport.use(new FacebookStrategy({
-    clientID: config.FACEBOOK_APP_ID,
-    clientSecret: config.FACEBOOK_APP_SECRET,
+    clientID: process.env.FACEBOOK_APP_ID || config.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET || config.FACEBOOK_APP_SECRET,
     // callbackURL: "http://www.example.com/auth/facebook/callback"
     callbackURL: "localhost:8080/auth/facebook/callback"
   },
