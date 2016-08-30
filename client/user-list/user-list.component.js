@@ -26,6 +26,7 @@ angular
         });*/
 
         this.users = User.query();
+        console.log(this.users);
         this.orderProp = 'distance';
 
       }

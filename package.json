@@ -21,6 +21,11 @@
   },
   "homepage": "https://github.com/simeonlee/2016-07-mvp#readme",
   "dependencies": {
-    "bower": "^1.7.9"
+    "body-parser": "^1.15.2",
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.9",
+    "mongoose": "^4.5.10",
+    "path": "^0.12.7"
   }
 }
