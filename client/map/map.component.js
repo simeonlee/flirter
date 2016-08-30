@@ -70,7 +70,7 @@ angular
           // Set infowindow content
           var iwContent = '<div class="iw">'+
             // '<a href="'+externalLink+'" target="_blank">'+
-            '<img src="'+$rootScope.profileImageUrl+'" alt="'+$rootScope.name+'">'+
+            '<img src="'+$rootScope.self.profileImageUrl+'" alt="'+$rootScope.self.name+'">'+
             this.shoutedMessage+
             // '</a>'+
             '</div>'
