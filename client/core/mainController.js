@@ -1,14 +1,14 @@
 angular
 	.module('core')
-  .controller('MainController', function($scope) {
+  .controller('MainController', function($scope, $rootScope) {
     $scope.$on('$viewContentLoaded', function() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(geoposition) {
-          var location = {
+          $rootScope.location = {
             lat: geoposition.coords.latitude,
             lng: geoposition.coords.longitude
           };
-          console.log(location);
+          // console.log($rootScope.location);
         }, function() {
           alert('Geolocation failed :(');
         });

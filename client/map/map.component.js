@@ -3,17 +3,20 @@ angular
   .component('map', {
     // template: 'TODO: detailed view for <span>{{$ctrl.userId}}</span>',
     templateUrl: 'map/map.template.html',
-    controller: ['$http',
-      function MapController($http) {
+    controller: ['$http', '$scope', '$rootScope',
+      function MapController($http, $scope, $rootScope) {
+
         this.location = {
           lat: 37.783697,
           lng: -122.408966
         };
+        
+        console.log($rootScope.userLocation);
         var self = this;
         $http.get('styles/mapStyle.json').then(function(response) {
           // self.mapStyle = response.data;
           var map = new google.maps.Map(document.getElementById('map'), {
-            center: self.location,
+            center: $rootScope.userLocation || self.location,
             zoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             styles: response.data,
@@ -28,19 +31,43 @@ angular
             fullscreenControl: false
           })
 
+
           var userIcon = new google.maps.MarkerImage('images/user/userIcon@2x.png', null, null, null, new google.maps.Size(40, 40))
-          var userMarker = new google.maps.Marker({
+          $rootScope.userMarker = new google.maps.Marker({
             position: self.location,
             icon: userIcon,
             title: 'You',
             animation: google.maps.Animation.DROP
           });
-          userMarker.setMap(map);
-          userMarker.setAnimation(google.maps.Animation.BOUNCE);
+          $rootScope.userMarker.setMap(map);
+          $rootScope.userMarker.setAnimation(google.maps.Animation.BOUNCE);
 
+
+
+          // listen for user location determination and re-set center of map
+          $scope.$watch(function() {
+            return $rootScope.userLocation;
+          }, function() {
+            console.log($rootScope.userLocation);
+            // map.setCenter($rootScope.userLocation)
+            // var userIcon = new google.maps.MarkerImage('images/user/userIcon@2x.png', null, null, null, new google.maps.Size(40, 40))
+            // var userMarker = new google.maps.Marker({
+            //   position: $rootScope.userLocation,
+            //   icon: userIcon,
+            //   title: 'You',
+            //   animation: google.maps.Animation.DROP
+            // });
+            // userMarker.setMap(map);
+            // userMarker.setAnimation(google.maps.Animation.BOUNCE);
+          }, true);
+
+        });
+
+        this.shout = function() {
+          console.log(this.shoutedMessage);
           // Set infowindow content
           var iwContent = '<div class="iw">'+
-            'Hello'+
+            this.shoutedMessage+
             // '<a href="'+externalLink+'" target="_blank">'+
             // '<img src="'+thumbnailUrl+'" alt="'+externalLink+'" class="iw">'+
             // '</a>'+
@@ -52,10 +79,10 @@ angular
           });
 
           // Attach to marker variable
-          userMarker.infowindow = infowindow;
+          $rootScope.userMarker.infowindow = infowindow;
           
           // .open sets the infowindow upon the map
-          userMarker.infowindow.open(map, userMarker);
+          $rootScope.userMarker.infowindow.open(map, $rootScope.userMarker);
           
           // About 'state':
           // true = 'I am currently open'
@@ -122,7 +149,7 @@ angular
             iwCloseBtn.css({'display': 'none'});
 
           });
-        });
+        }
       }
     ]
   });
