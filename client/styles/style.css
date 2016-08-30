@@ -115,6 +115,10 @@ li {
   width: 100% !important;
 }
 
+.iw-cover-photo {
+  width: 200px;
+}
+
 .iw-time {
   font-size: 10px;
   color: grey;
