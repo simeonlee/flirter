@@ -5,12 +5,21 @@ angular
     templateUrl: 'user-detail/user-detail.template.html',
     controller: ['$http', '$routeParams',
       function UserDetailController($http, $routeParams) {
-      	var self = this;
+      	// var self = this;
 
-      	$http.get('sample-data/' + $routeParams.userId + '.json').then(function(response) {
-      		self.user = response.data;
-      	});
+      	// $http.get('sample-data/' + $routeParams.userId + '.json').then(function(response) {
+      		// self.user = response.data;
+      	// });
         // this.userId = $routeParams.userId;
+
+        var self = this;
+        self.user = User.get({userId: $routeParams.userId}, function(user) {
+          self.setImage(user.imageUrl);
+        });
+
+        self.setImage = function(imageUrl) {
+          self.mainImageUrl = imageUrl;
+        }
       }
     ]
   });

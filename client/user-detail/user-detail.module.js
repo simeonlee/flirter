@@ -1,3 +1,4 @@
 angular.module('userDetail', [
-  'ngRoute'
+  'ngRoute',
+  'core.user'
 ]);

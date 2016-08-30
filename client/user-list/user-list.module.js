@@ -1,3 +1,4 @@
 angular.module('userList', [
-	'ngRoute'
+	'ngRoute',
+	'core.user'
 ]);
