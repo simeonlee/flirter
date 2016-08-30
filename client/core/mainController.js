@@ -8,7 +8,6 @@ angular
             lat: geoposition.coords.latitude,
             lng: geoposition.coords.longitude
           };
-          // console.log($rootScope.location);
         }, function() {
           alert('Geolocation failed :(');
         });

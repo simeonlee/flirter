@@ -200,7 +200,9 @@ db.once('open', function() {
 
   // update user by id
   app.put('/users/:id', function(req, res) {
-
+    console.log('We\'ve found user!')
+    console.log('Attempting to save stuff to database');
+    console.log(req.body);
   });
 
   // delete user by id
