@@ -124,3 +124,21 @@ li {
   color: grey;
   float: right;
 }
+
+.iw-like {
+  width: 95px;
+  float: left;
+}
+
+.iw-dislike {
+  width: 95px;
+  float: right;
+}
+
+.iw-like-image {
+  width: 50%;
+}
+
+.iw-dislike-image {
+  width: 50%;
+}

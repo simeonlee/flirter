@@ -65,14 +65,21 @@ angular
 
         this.shout = function() {
           // Set infowindow content
-          var iwContent = '<div class="iw">'+
-            // '<a href="'+externalLink+'" target="_blank">'+
-            '<img src="'+$rootScope.self.coverPhotoUrl+'" class="iw-cover-photo">'+
-            '<img src="'+$rootScope.self.profileImageUrl+'" class="iw-profile-image">'+
-            '<div class="iw-message">'+this.shoutedMessage+'<div>'+
-            '<div class="iw-time">'+new Date()+'<div>'+
-            // '</a>'+
-            '</div>'
+          var iwContent =
+          '<div class="iw">'+
+            '<img src="'+$rootScope.self.coverPhotoUrl+'" class="iw-cover-photo" />'+
+            '<img src="'+$rootScope.self.profileImageUrl+'" class="iw-profile-image" />'+
+            '<div class="iw-message">'+this.shoutedMessage+'</div>'+
+            '<div class="iw-time">'+new Date()+'</div>'+
+            '<div class="iw-preference">'+
+              '<div class="iw-like">'+
+                '<img src="/images/heart/heart@2x.png" class="iw-like-image">'+
+              '</div>'+
+              '<div class="iw-dislike">'+
+                '<img src="/images/dislike/dislike@2x.png" class="iw-dislike-image">'+
+              '</div>'+
+            '</div>'+
+          '</div>';
           var infowindow = new google.maps.InfoWindow({
             content: iwContent,
             disableAutoPan: true, // prevent map from moving around to each infowindow - spastic motion
