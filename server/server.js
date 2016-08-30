@@ -8,7 +8,7 @@ var userSchema;
 var User;
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
-// var config = require('./config');
+var utils = require('./lib/utils');
 
 var mongooseUri =
    process.env.MONGODB_URI ||
@@ -21,6 +21,7 @@ db.once('open', function() {
 
   userSchema = new Schema({
     name: String,
+    age: Number,
     ageRange: String,
     birthday: String,
     gender: String,
@@ -60,6 +61,7 @@ db.once('open', function() {
         userObj.name = raw.first_name;
         userObj.email = profile.emails[0].value;
         userObj.ageRange = raw.age_range;
+        userObj.age = utils.calculateAge(raw.birthday);
         userObj.birthday = raw.birthday;
         userObj.gender = raw.gender;
         userObj.city = raw.location.name;
@@ -74,6 +76,9 @@ db.once('open', function() {
       }
     })
   }
+
+
+  
 
   User = mongoose.model('User', userSchema);
 
