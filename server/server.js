@@ -40,7 +40,10 @@ db.once('open', function() {
       {
         body: String,
         date: Date,
-        location: String
+        location: {
+          lat: Number,
+          lng: Number
+        }
       }
     ],
     peopleLiked: [
