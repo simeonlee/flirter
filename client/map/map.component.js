@@ -186,6 +186,10 @@ angular
             iwCloseBtn.css({'display': 'none'});
 
           });
+
+          this.users = User.users.query();
+          console.log(users);
+
         }
 
 
