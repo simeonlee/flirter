@@ -206,7 +206,7 @@ angular
               icon: demoIcon,
               title: 'Flirt?',
               animation: google.maps.Animation.DROP,
-              setMap: map
+              map: map
             });
             // demoMarker.setMap(map);
             demoMarker.setAnimation(google.maps.Animation.BOUNCE);
@@ -236,7 +236,7 @@ angular
             demoInfowindow.open(map, demoMarker);
             
             // Attach to marker variable
-            demoMarker.infowindow = demoInfowindow;
+            // demoMarker.infowindow = demoInfowindow;
           }, function(err){
             // failure, use err for logging etc...
             console.log(err);
