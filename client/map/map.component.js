@@ -216,7 +216,7 @@ angular
               '<div class="iw">'+
                 '<img src="'+demoUser.coverPhotoUrl+'" class="iw-cover-photo" />'+
                 '<img src="'+demoUser.profileImageUrl+'" class="iw-profile-image" />'+
-                '<div class="iw-name">'+demoNote.name+'</div>'+
+                '<div class="iw-name">'+demoUser.name+'</div>'+
                 '<div class="iw-message">'+demoNote.body+'</div>'+
                 '<div class="iw-time">'+calculateSince(demoNote.date)+'</div>'+
                 '<div class="iw-preference">'+
