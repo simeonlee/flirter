@@ -205,9 +205,10 @@ angular
               },
               icon: demoIcon,
               title: 'Flirt?',
-              animation: google.maps.Animation.DROP
+              animation: google.maps.Animation.DROP,
+              setMap: map
             });
-            demoMarker.setMap(map);
+            // demoMarker.setMap(map);
             demoMarker.setAnimation(google.maps.Animation.BOUNCE);
 
             var demoIwContent =
