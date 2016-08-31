@@ -191,48 +191,55 @@ angular
             Begin demo code
           */
 
-          this.users = User.users.query();
-          console.log(this.users);
+          User.users.query().$promise.then(function(data){
+            // success, use data
+            var demoUser = data[0];
+            console.log(demoUser);
+            var demoNote = demoUser.notes[0];
 
-          var demoUser = this.users[0];
-          var demoNote = demoUser.notes[0];
+            var demoIcon = new google.maps.MarkerImage('images/heart/heart@2x.png', null, null, null, new google.maps.Size(40, 40))
+            var demoMarker = new google.maps.Marker({
+              position: demoNote.location,
+              icon: demoIcon,
+              title: 'Flirt?',
+              animation: google.maps.Animation.DROP
+            });
+            demoMarker.setMap(map);
+            demoMarker.setAnimation(google.maps.Animation.BOUNCE);
 
-          var demoIcon = new google.maps.MarkerImage('images/heart/heart@2x.png', null, null, null, new google.maps.Size(40, 40))
-          var demoMarker = new google.maps.Marker({
-            position: demoNote.location,
-            icon: demoIcon,
-            title: 'Flirt?',
-            animation: google.maps.Animation.DROP
-          });
-          demoMarker.setMap(map);
-          demoMarker.setAnimation(google.maps.Animation.BOUNCE);
-
-          var demoIwContent =
-            '<div class="iw">'+
-              '<img src="'+demoUser.coverPhotoUrl+'" class="iw-cover-photo" />'+
-              '<img src="'+demoUser.profileImageUrl+'" class="iw-profile-image" />'+
-              '<div class="iw-message">'+demoNote.body+'</div>'+
-              '<div class="iw-time">'+calculateSince(demoNote.date)+'</div>'+
-              '<div class="iw-preference">'+
-                '<div class="iw-like">'+
-                  '<img src="/images/heart/heart@2x.png" class="iw-like-image">'+
+            var demoIwContent =
+              '<div class="iw">'+
+                '<img src="'+demoUser.coverPhotoUrl+'" class="iw-cover-photo" />'+
+                '<img src="'+demoUser.profileImageUrl+'" class="iw-profile-image" />'+
+                '<div class="iw-message">'+demoNote.body+'</div>'+
+                '<div class="iw-time">'+calculateSince(demoNote.date)+'</div>'+
+                '<div class="iw-preference">'+
+                  '<div class="iw-like">'+
+                    '<img src="/images/heart/heart@2x.png" class="iw-like-image">'+
+                  '</div>'+
+                  '<div class="iw-dislike">'+
+                    '<img src="/images/dislike/dislike@2x.png" class="iw-dislike-image">'+
+                  '</div>'+
                 '</div>'+
-                '<div class="iw-dislike">'+
-                  '<img src="/images/dislike/dislike@2x.png" class="iw-dislike-image">'+
-                '</div>'+
-              '</div>'+
-            '</div>';
-          var demoInfowindow = new google.maps.InfoWindow({
-            content: demoIwContent,
-            disableAutoPan: true, // prevent map from moving around to each infowindow - spastic motion
-            maxWidth: 200 // width of the card - also change .gm-style-iw width in css
+              '</div>';
+            var demoInfowindow = new google.maps.InfoWindow({
+              content: demoIwContent,
+              disableAutoPan: true, // prevent map from moving around to each infowindow - spastic motion
+              maxWidth: 200 // width of the card - also change .gm-style-iw width in css
+            });
+
+            // .open sets the infowindow upon the map
+            demoInfowindow.open(map, demoMarker);
+            
+            // Attach to marker variable
+            demoMarker.infowindow = demoInfowindow;
+          }, function(err){
+            // failure, use err for logging etc...
+            console.log(err);
+            return;
           });
 
-          // .open sets the infowindow upon the map
-          demoInfowindow.open(map, demoMarker);
-          
-          // Attach to marker variable
-          demoMarker.infowindow = demoInfowindow;
+  
           
 
         }
