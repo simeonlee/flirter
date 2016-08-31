@@ -33,6 +33,7 @@ angular
             rotateControl: false,
             fullscreenControl: false
           })
+          $rootScope.map = map;
 
 
           var userIcon = new google.maps.MarkerImage('images/user/userIcon@2x.png', null, null, null, new google.maps.Size(40, 40))
@@ -206,7 +207,7 @@ angular
               icon: demoIcon,
               title: 'Flirt?',
               animation: google.maps.Animation.DROP,
-              map: map
+              setMap: $rootScope.map
             });
             // demoMarker.setMap(map);
             demoMarker.setAnimation(google.maps.Animation.BOUNCE);
@@ -233,7 +234,7 @@ angular
             });
 
             // .open sets the infowindow upon the map
-            demoInfowindow.open(map, demoMarker);
+            demoInfowindow.open($rootScope.map, demoMarker);
             
             // Attach to marker variable
             // demoMarker.infowindow = demoInfowindow;
