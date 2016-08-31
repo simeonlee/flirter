@@ -54,7 +54,10 @@ db.once('open', function() {
         locationLiked: String
       }
     ],
-    lastLocation: String,
+    lastLogInLocation: {
+      lat: Number,
+      lng: Number
+    },
     joinDate: { type: Date, default: Date.now },
 
     // teens can chat with other teens, why not...
