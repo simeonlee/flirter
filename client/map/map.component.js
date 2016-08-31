@@ -36,7 +36,7 @@ angular
           $rootScope.map = map;
 
 
-          var userIcon = new google.maps.MarkerImage('images/user/userIcon@2x.png', null, null, null, new google.maps.Size(40, 40))
+          var userIcon = new google.maps.MarkerImage('images/user/potentials@2x.png', null, null, null, new google.maps.Size(35, 35))
           $rootScope.userMarker = new google.maps.Marker({
             position: self.location,
             icon: userIcon,
