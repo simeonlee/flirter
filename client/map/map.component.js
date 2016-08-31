@@ -36,7 +36,7 @@ angular
           $rootScope.map = map;
 
 
-          var userIcon = new google.maps.MarkerImage('images/user/userIcon@2x.png', null, null, null, new google.maps.Size(35, 35))
+          var userIcon = new google.maps.MarkerImage('images/user/userIcon@2x.png', null, null, null, new google.maps.Size(36, 36))
           $rootScope.userMarker = new google.maps.Marker({
             position: self.location,
             icon: userIcon,
@@ -72,6 +72,7 @@ angular
             '<div class="iw">'+
               '<img src="'+$rootScope.self.coverPhotoUrl+'" class="iw-cover-photo" />'+
               '<img src="'+$rootScope.self.profileImageUrl+'" class="iw-profile-image" />'+
+              '<div class="iw-name">'+$rootScope.self.name+'</div>'+
               '<div class="iw-message">'+this.shoutedMessage+'</div>'+
               '<div class="iw-time">'+calculateSince(shoutTimestamp)+'</div>'+
               '<div class="iw-preference">'+
@@ -198,7 +199,7 @@ angular
             console.log(demoUser);
             var demoNote = demoUser.notes[0];
 
-            var demoIcon = new google.maps.MarkerImage('images/user/potentials@2x.png', null, null, null, new google.maps.Size(35, 35))
+            var demoIcon = new google.maps.MarkerImage('images/user/potentials@2x.png', null, null, null, new google.maps.Size(32, 32))
             var demoMarker = new google.maps.Marker({
               position: {
                 lat: demoNote.location.lat,
@@ -215,6 +216,7 @@ angular
               '<div class="iw">'+
                 '<img src="'+demoUser.coverPhotoUrl+'" class="iw-cover-photo" />'+
                 '<img src="'+demoUser.profileImageUrl+'" class="iw-profile-image" />'+
+                '<div class="iw-name">'+demoNote.name+'</div>'+
                 '<div class="iw-message">'+demoNote.body+'</div>'+
                 '<div class="iw-time">'+calculateSince(demoNote.date)+'</div>'+
                 '<div class="iw-preference">'+
