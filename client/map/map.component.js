@@ -188,7 +188,7 @@ angular
           });
 
           this.users = User.users.query();
-          console.log(users);
+          console.log(this.users);
 
         }
 
