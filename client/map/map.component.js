@@ -199,7 +199,10 @@ angular
 
             var demoIcon = new google.maps.MarkerImage('images/heart/heart@2x.png', null, null, null, new google.maps.Size(40, 40))
             var demoMarker = new google.maps.Marker({
-              position: demoNote.location,
+              position: {
+                lat: demoNote.location.lat,
+                lng: demoNote.location.lng,
+              },
               icon: demoIcon,
               title: 'Flirt?',
               animation: google.maps.Animation.DROP
