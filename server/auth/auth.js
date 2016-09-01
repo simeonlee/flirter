@@ -1,17 +1,16 @@
-// var session = require('express-session');
+var session = require('express-session');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var userModel = require('../db/users/userModel');
 var authConfig = require('./authConfig');
 
 module.exports = function(app) {
-  // app.use(session({
-  //   secret: 'flirting secret',
-  //   cookie: {}
-  //   // resave: false,
-  //   // saveUninitialized: true,
-  //   // cookie: { secure: true }
-  // }));
+  app.use(session({
+    secret: 'flirting secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  }));
   app.use(passport.initialize());
   app.use(passport.session());
 
