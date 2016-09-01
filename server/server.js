@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 var userSchema;
 var User;
 var userId;
+var session = require('express-session');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var utils = require('./lib/utils');
@@ -106,7 +107,12 @@ db.once('open', function() {
   var app = express();
   app.use(express.static(__dirname + '/../client'));
   app.use(bodyParser.json());
-  // app.use(express.session({ secret: 'secret' }));
+  app.use(session({
+    secret: 'flirting secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  }));
   app.use(passport.initialize());
   app.use(passport.session());
 
@@ -138,7 +144,7 @@ db.once('open', function() {
         'interested_in', 
         'link', // FB timeline 
         'website', 
-        'is_verified', 
+        'is_verified'
       ]
     },
     function(accessToken, refreshToken, profile, done) {
