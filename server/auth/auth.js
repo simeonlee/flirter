@@ -7,9 +7,10 @@ var authConfig = require('./authConfig');
 module.exports = function(app) {
   app.use(session({
     secret: 'flirting secret',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: {}
+    // resave: false,
+    // saveUninitialized: true,
+    // cookie: { secure: true }
   }));
   app.use(passport.initialize());
   app.use(passport.session());
