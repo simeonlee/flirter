@@ -2,7 +2,7 @@ angular
   .module('map')
   .component('map', {
     // template: 'TODO: detailed view for <span>{{$ctrl.userId}}</span>',
-    templateUrl: 'map/map.template.html',
+    templateUrl: 'src/map/map.template.html',
     controller: ['$http', '$scope', '$rootScope', 'User',
       function MapController($http, $scope, $rootScope, User) {
 

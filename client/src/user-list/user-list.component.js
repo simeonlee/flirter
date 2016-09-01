@@ -2,7 +2,7 @@ angular
   .module('userList')
   .component('userList', {
     // Url is relative to our index.html file
-    templateUrl: 'user-list/user-list.template.html',
+    templateUrl: 'src/user-list/user-list.template.html',
     controller: ['User',
       function UserListController(User) {
         // var self = this;

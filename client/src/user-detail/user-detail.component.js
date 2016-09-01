@@ -2,7 +2,7 @@ angular
   .module('userDetail')
   .component('userDetail', {
     // template: 'TODO: detailed view for <span>{{$ctrl.userId}}</span>',
-    templateUrl: 'user-detail/user-detail.template.html',
+    templateUrl: 'src/user-detail/user-detail.template.html',
     controller: ['User', '$routeParams',
       function UserDetailController(User, $routeParams) {
 
