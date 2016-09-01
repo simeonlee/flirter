@@ -1,4 +1,4 @@
-var session = require('express-session');
+// var session = require('express-session');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var userModel = require('../db/users/userModel');
