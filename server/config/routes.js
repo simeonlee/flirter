@@ -1,5 +1,6 @@
 var passport = require('passport');
 var userModel = require('../db/users/userModel');
+var authConfig = require('../auth/authConfig');
 
 module.exports = function(app) {
   // get info about self
