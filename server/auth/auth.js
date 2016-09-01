@@ -5,13 +5,13 @@ var userModel = require('../db/users/userModel');
 var authConfig = require('./authConfig');
 
 module.exports = function(app) {
-  app.use(session({
-    secret: 'flirting secret',
-    cookie: {}
-    // resave: false,
-    // saveUninitialized: true,
-    // cookie: { secure: true }
-  }));
+  // app.use(session({
+  //   secret: 'flirting secret',
+  //   cookie: {}
+  //   // resave: false,
+  //   // saveUninitialized: true,
+  //   // cookie: { secure: true }
+  // }));
   app.use(passport.initialize());
   app.use(passport.session());
 
