@@ -7,7 +7,8 @@ mongoose.connect(mongooseUri);
 var app = express();
 
 require('./config/middleware.js')(app, express);
-require('./config/routes.js')(app, express);
+require('./config/routes.js')(app);
+require('./auth/auth.js')(app);
 
 var server = app.listen(process.env.PORT || 8080, function() {
   var port = server.address().port;
