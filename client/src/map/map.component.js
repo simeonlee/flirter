@@ -1,7 +1,6 @@
 angular
   .module('map')
   .component('map', {
-    // template: 'TODO: detailed view for <span>{{$ctrl.userId}}</span>',
     templateUrl: 'src/map/map.template.html',
     controller: ['$http', '$scope', '$rootScope', 'User',
       function MapController($http, $scope, $rootScope, User) {
@@ -71,7 +70,7 @@ angular
           var iwContent =
             '<div class="iw">'+
               '<img src="'+$rootScope.self.coverPhotoUrl+'" class="iw-cover-photo" />'+
-              '<img src="'+$rootScope.self.profileImageUrl+'" class="iw-profile-image" />'+
+              '<img src="'+$rootScope.self.profilePhotoUrl+'" class="iw-profile-image" />'+
               '<div class="iw-name">'+$rootScope.self.name+'</div>'+
               '<div class="iw-message">'+this.shoutedMessage+'</div>'+
               '<div class="iw-time">'+calculateSince(shoutTimestamp)+'</div>'+
@@ -215,7 +214,7 @@ angular
             var demoIwContent =
               '<div class="iw">'+
                 '<img src="'+demoUser.coverPhotoUrl+'" class="iw-cover-photo" />'+
-                '<img src="'+demoUser.profileImageUrl+'" class="iw-profile-image" />'+
+                '<img src="'+demoUser.profilePhotoUrl+'" class="iw-profile-image" />'+
                 '<div class="iw-name">'+demoUser.name+'</div>'+
                 '<div class="iw-message">'+demoNote.body+'</div>'+
                 '<div class="iw-time">'+calculateSince(demoNote.date)+'</div>'+

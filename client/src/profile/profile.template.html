@@ -1,7 +1,7 @@
 <div class="my-profile">
   <!-- profile photo -->
   <div class="my-profile my-profile-photo">
-    <img ng-src="{{$ctrl.mainImageUrl}}" />
+    <img ng-src="{{$ctrl.self.profilePhotoUrl}}" />
   </div>
   <!-- first name --><!-- age -->
   <div class="my-profile my-profile-header">
@@ -9,22 +9,22 @@
     <div class="my-profile my-profile-age">{{$ctrl.self.age}}</div>
   </div>
   <!-- position at company -->
-  <div class="my-profile my-profile-job">{{$ctrl.self.job.position}} at {{$ctrl.self.job.employer}}</div>
+  <div class="my-profile my-profile-job">{{$ctrl.self.job.position}} at {{$ctrl.self.job.company}}</div>
   <!-- school -->
   <div class="my-profile my-profile-education">{{$ctrl.self.education}}</div>
   <!-- bio -->
   <div class="my-profile my-profile-bio">{{$ctrl.self.bio}}</div>
   <!-- skills -->
   <ul class="my-profile my-profile-skills">
-    <li ng-repeat="skill in $ctrl.self.skills">skill</li>
+    <li ng-repeat="skill in $ctrl.self.skills">{{skill}}</li>
   </ul>
   <!-- interests -->
   <ul class="my-profile my-profile-interests">
-    <li ng-repeat="interest in $ctrl.self.interests">interest</li>
+    <li ng-repeat="interest in $ctrl.self.interests">{{interest}}</li>
   </ul>
   <!-- friends -->
   <ul class="my-profile my-profile-friends">
-    <li ng-repeat="friend in $ctrl.self.friends">friend</li>
+    <li ng-repeat="friend in $ctrl.self.friends">{{friend}}</li>
   </ul>
   <!-- spotify -->
   <div class="my-profile my-profile-spotify">Spotify</div>

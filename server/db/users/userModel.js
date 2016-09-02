@@ -68,7 +68,7 @@ userSchema.statics.findOrCreate = function(profile, cb) {
       userObj.job = raw.work;
       userObj.education = raw.education[0].school.name;
       userObj.description = raw.bio;
-      userObj.profileImageUrl = profile.photos[0].value;
+      userObj.profilePhotoUrl = profile.photos[0].value;
       userObj.coverPhotoUrl = raw.cover.source;
       userObj.save(cb);
     } else {
