@@ -10,7 +10,6 @@ angular
   .module('core.user')
   .factory('User', ['$resource',
     function($resource) {
-      // return $resource('sample-data/:userId.json', {}, {
       // return $resource('/users', {}, {
       //   query: {
       //     method: 'GET',

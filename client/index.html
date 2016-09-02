@@ -23,17 +23,25 @@
     <!-- Note that files defining a module (i.e. .module.js) need to be included before other files that add features (e.g. components, controllers, services, filters) to that module. -->
     <script src="src/app.module.js"></script>
     <script src="src/app.config.js"></script>
+    
     <script src="src/core/core.module.js"></script>
     <script src="src/core/liked/liked.filter.js"></script>
     <script src="src/core/user/user.module.js"></script>
     <script src="src/core/user/user.service.js"></script>
     <script src="src/core/mainController.js"></script>
+
+    <script src="src/settings/settings.module.js"></script>
+    <script src="src/settings/settings.component.js"></script>
+    <script src="src/profile/profile.module.js"></script>
+    <script src="src/profile/profile.component.js"></script>
     <script src="src/map/map.module.js"></script>
     <script src="src/map/map.component.js"></script>
     <script src="src/user-list/user-list.module.js"></script>
     <script src="src/user-list/user-list.component.js"></script>
     <script src="src/user-detail/user-detail.module.js"></script>
     <script src="src/user-detail/user-detail.component.js"></script>
+    <script src="src/login/login.module.js"></script>
+    <script src="src/login/login.component.js"></script>
   </head>
   <body ng-controller="MainController">
     <!-- Set up Facebook SDK -->
